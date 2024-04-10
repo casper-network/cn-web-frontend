@@ -29,6 +29,16 @@
             <Glider :glide-data="block.media"></Glider>
           </div>
         </div>
+        <div class="container block" v-if="block.blocktype === 'linklist'">
+          <LinkList
+            :block-data="block"
+          ></LinkList>
+        </div>
+        <div class="container block" v-if="block.blocktype === 'filelist'">
+          <FileList
+            :block-data="block"
+          ></FileList>
+        </div>
         <div class="container block" v-if="block.blocktype === 'video'">
           <div class="half-carousel">
             <VideoPlayer
