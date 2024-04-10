@@ -120,6 +120,7 @@ export default {
       padding-top: 24px;
       padding-bottom: 24px;
       border-bottom: 1px solid #ccc;
+      margin: initial;
 
       &:last-child {
         border-bottom: 0;
