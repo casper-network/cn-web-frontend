@@ -83,14 +83,6 @@ export default {
     telegram: 'https://t.me/casperblockchain',
     github: 'https://github.com/casper-network',
   },
-  navigation: [
-    {
-      label: 'Get started',
-      url: 'get-started',
-      class: 'special',
-      type: 'int',
-    },
-  ],
   footer: {
     socialTitle: 'Join our<br/><span>Community</span>',
     metanav: [
