@@ -9,8 +9,8 @@
         <ul>
           <li
             class="nav-item"
-            :class="(item.class) ? item.class : ''"
             v-for="(item, index) in computedNavigation" :key="`navitem-${index}`"
+            :class="{ special: item.special }"
             :data-has-sub="!!(item.children)"
           >
             <div v-if="item.url && !item.children">
@@ -116,11 +116,13 @@ export default {
   //---------------------------------------------------
   computed: {
     computedNavigation() {
-      let navigation = this.$store.state.navigations?.main_navigation || [];
+      const navigation = this.$store.state.navigations?.main_navigation || [];
       navigation.forEach((o) => {
         if (o.url) {
           // eslint-disable-next-line no-param-reassign
           o.type = o.url.includes('http') ? 'ext' : 'int';
+          // eslint-disable-next-line no-param-reassign
+          o.special = o.cta === true;
         }
         if (o.children) {
           o.children.forEach((oo) => {
@@ -131,11 +133,6 @@ export default {
           });
         }
       });
-
-      const path = 'navigation';
-      if (this.$i18n.te(path)) {
-        navigation = navigation.concat(this.$i18n.t(path));
-      }
       return navigation;
     },
   },
