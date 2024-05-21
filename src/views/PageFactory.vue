@@ -30,6 +30,14 @@
         :media="block.media"
         :variation="block.variation"
       />
+      <Codeblock
+        :is-first="blockIndex === 0"
+        v-if="block.blocktype === 'codeblock'"
+        :box-title="block.title"
+        :box-content="block.content"
+        :code="block.code"
+        :language="block.language"
+      />
       <div class="container embed" v-if="block.blocktype === 'embed'" v-html="block.html" />
       <div class="container" v-if="block.blocktype === 'linklist'">
         <LinkList

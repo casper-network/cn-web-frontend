@@ -18,6 +18,13 @@
           :button-type="block.button.type"
           :button-label="block.button.text"
         />
+        <ArticleCodeblock
+          v-if="block.blocktype === 'codeblock'"
+          :title="block.title"
+          :content="block.content"
+          :code="block.code"
+          :language="block.language"
+        />
         <div class="container -long" v-if="block.blocktype === 'highlight'">
           <div class="container">
             <SingleQuote
