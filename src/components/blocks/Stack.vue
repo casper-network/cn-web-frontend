@@ -193,20 +193,24 @@ export default {
 
     p {
       font-weight: 300;
-      padding-left: 20px;
-      padding-right: 20px;
+
+      @include breakpoint('sm') {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
 
     & > .half {
       display: flex;
       width: 100%;
+      gap: 40px;
 
       & > div {
         width: 50%;
         max-width: 50%;
 
         &.content {
-          width: 33.33%;
+          width: 50%;
 
           @include breakpoint('sm') {
             width: 50vw;
@@ -280,6 +284,46 @@ export default {
       h2.h1 {
         color: var(--color-pelati);
       }
+
+      @include breakpoint('sm') {
+        & > .half {
+          & > div {
+            &.content {
+              width: 100%;
+              min-width: calc(100% - 40px);
+              z-index: 2;
+            }
+            &.media {
+              pointer-events: none;
+              user-select: none;
+              position: relative;
+              z-index: 1;
+              right: calc(25% - 20px);
+              width: calc(50vw + 20px);
+              min-width: calc(50vw + 20px);
+              height: inherit;
+              max-width: none;
+              transform: translate(-50%, 0);
+
+              @include breakpoint('s') {
+                right: calc(38% - 20px);
+                width: 100vw;
+                min-width: 100vw;
+              }
+
+              & > img {
+                opacity: 0.15;
+                height: 100%;
+                width: auto;
+                max-width: none;
+                transform: none;
+                left: 0;
+                top: auto;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
@@ -316,6 +360,13 @@ export default {
                 max-height: none;
                 max-width: none;
                 transform: none;
+              }
+
+              @include breakpoint('sm') {
+                max-height: 33vh;
+              }
+              @include breakpoint('s') {
+                max-height: 180px;
               }
             }
           }
