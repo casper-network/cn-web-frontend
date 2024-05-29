@@ -243,9 +243,14 @@ div.hero {
       color: var(--color-black);
       font-weight: 300;
       flex: 1 0 40%;
+      text-wrap: pretty;
 
       span {
         font-weight: 300;
+      }
+
+      @include breakpoint('m') {
+        min-width: 65vw;
       }
 
       @include breakpoint('sm') {
