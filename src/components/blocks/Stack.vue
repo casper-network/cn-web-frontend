@@ -260,6 +260,16 @@ export default {
             height: auto;
             aspect-ratio: 1;
 
+            &[alt="Stack1"] {
+              position: absolute;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              left: 80%;
+              width: 80vw;
+              max-width: 960px;
+              align-self: center;
+            }
+
             @include breakpoint('sm') {
               position: absolute;
               top: 50%;
@@ -287,38 +297,29 @@ export default {
 
       @include breakpoint('sm') {
         & > .half {
+          flex-direction: column;
           & > div {
             &.content {
-              width: 100%;
-              min-width: calc(100% - 40px);
-              z-index: 2;
+              padding-left: 20px;
+              padding-right: 20px;
+              width: calc(100% - 40px);
+              min-width: auto;
+              max-width: 100%;
             }
             &.media {
-              pointer-events: none;
-              user-select: none;
-              position: relative;
-              z-index: 1;
-              right: calc(25% - 20px);
-              width: calc(50vw + 20px);
-              min-width: calc(50vw + 20px);
-              height: inherit;
-              max-width: none;
-              transform: translate(-50%, 0);
-
-              @include breakpoint('s') {
-                right: calc(38% - 20px);
+              padding-top: 10vh;
+              width: 100%;
+              max-width: 100%;
+              max-height: 60vw;
+              img {
+                position: relative;
+                left: auto;
+                top: auto;
                 width: 100vw;
-                min-width: 100vw;
-              }
-
-              & > img {
-                opacity: 0.15;
                 height: 100%;
-                width: auto;
+                max-height: none;
                 max-width: none;
                 transform: none;
-                left: 0;
-                top: auto;
               }
             }
           }
