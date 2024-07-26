@@ -28,6 +28,7 @@
         :text-color="block.txtcolor"
         :link-color="block.linkcolor"
         :media="block.media"
+        :video="block.video"
         :variation="block.variation"
       />
       <Codeblock

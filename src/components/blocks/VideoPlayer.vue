@@ -258,8 +258,9 @@ div[data-vimeo-initialized="true"] {
     display: block;
     left: 50%;
     top: 50%;
-    width: 120px;
-    height: 120px;
+    width: 15%;
+    height: auto;
+    max-width: 120px;
     z-index: 2000;
     cursor: pointer;
     backface-visibility: hidden;

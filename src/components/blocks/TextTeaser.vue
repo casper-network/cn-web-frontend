@@ -7,6 +7,13 @@
       <div>
         <h1 v-if="setAsH1" class="h1" v-html="boxTitle" :data-slug="slugged" />
         <h2 v-else class="h1" v-html="boxTitle" :data-slug="slugged" />
+        <VideoPlayer
+          v-if="mergeVideo && hasVideo"
+          class=""
+          :thumb="video.thumbnail"
+          :provider="video.service"
+          :video-id="video.id"
+        />
         <p v-html="boxContent"></p>
         <Button class="primary" v-if="hasButton">
           <router-link v-if="button.type === 'int'" :to="`/${$i18n.locale}${button.url}`">
@@ -24,8 +31,15 @@
         </Button>
 
       </div>
-      <div>
-        <MediaImage v-if="image" :asset="image" />
+      <div v-if="!mergeVideo && (image || hasVideo)" :class="{ video: hasVideo }">
+        <div v-if="hasVideo" class="video-wrapper">
+          <VideoPlayer
+            :thumb="video.thumbnail"
+            :provider="video.service"
+            :video-id="video.id"
+          />
+        </div>
+        <MediaImage v-else-if="image" :asset="image" />
       </div>
     </div>
   </div>
@@ -81,6 +95,10 @@ export default {
     },
     media: {
       type: Array,
+      default: null,
+    },
+    video: {
+      type: Object,
       default: null,
     },
     variation: {
@@ -139,6 +157,10 @@ export default {
       }
       return null;
     },
+    hasVideo() {
+      const { id } = this.video || {};
+      return !!id;
+    },
     hasFile() {
       const { file } = this;
       return file && file.id && file.text;
@@ -150,6 +172,9 @@ export default {
     slugged() {
       const title = (this.boxTitle || '').replace(/<\/?[^>]+(>|$)/g, '');
       return slugify(title, { lower: true, strict: true });
+    },
+    mergeVideo() {
+      return (this.$d.clientWidth <= 1241);
     },
   },
   //---------------------------------------------------
@@ -241,6 +266,36 @@ export default {
         width: 100%;
         max-width: 400px;
         height: auto;
+      }
+
+      &.video {
+        align-self: flex-start;
+        & > .video-wrapper {
+          position: relative;
+          margin-top: 25px;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16/9;
+
+          & > .video-container {
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25vw;
+            min-width: 440px;
+          }
+        }
+      }
+    }
+
+    & > div:only-child {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+
+      .video-container {
+        padding: 5px 0;
       }
     }
 
@@ -335,6 +390,36 @@ export default {
           width: 100%;
           max-width: 400px;
           height: auto;
+        }
+
+        &.video {
+          align-self: flex-start;
+          & > .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+
+            & > .video-container {
+              position: absolute;
+              padding: 0;
+              top: 0;
+              left: auto;
+              right: 0;
+              width: 25vw;
+              min-width: 440px;
+            }
+          }
+        }
+      }
+
+      & > div:only-child {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+
+        .video-container {
+          padding: 5px 0;
         }
       }
 
