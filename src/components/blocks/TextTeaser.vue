@@ -299,7 +299,7 @@ export default {
       }
     }
 
-    @include breakpoint('sm') {
+    @include breakpoint('m') {
       flex-direction: column;
       padding-top: 45px;
       // padding-bottom: 45px;
@@ -423,7 +423,7 @@ export default {
         }
       }
 
-      @include breakpoint('sm') {
+      @include breakpoint('m') {
         flex-direction: column;
         padding-top: 45px;
 
