@@ -174,7 +174,7 @@ export default {
       return slugify(title, { lower: true, strict: true });
     },
     mergeVideo() {
-      return (this.$d.clientWidth <= 1241);
+      return (this.hasVideo && this.$d.clientWidth <= 1241);
     },
   },
   //---------------------------------------------------
