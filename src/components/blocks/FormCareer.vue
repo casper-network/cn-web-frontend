@@ -177,7 +177,11 @@ export default {
           .then((resp) => {
             const countryCode = (resp && resp.country) ? resp.country : 'ch';
             callback(countryCode);
-          });
+          })
+          .catch(() => fetch('https://api.ip2location.io/')
+            .then(res => res.json())
+            .then(json => callback(json.country_code))
+            .catch(() => callback('ch')));
       },
     });
   },
