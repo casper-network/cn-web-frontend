@@ -21,9 +21,9 @@
       </router-link>
     </div>
     <div class="content" :class="`postType-${type}`">
-      <div class="time" v-if="type === 'news'">
+      <div class="time" v-if="type === 'news'" :title="date">
         <SVGClock />
-        {{ getRelativeDate }}
+        <time :datetime="date">{{ getRelativeDate }}</time>
       </div>
       <h3 v-if="type === 'news'">{{postItemData.content[0].title}}</h3>
       <h3 v-else>{{postItemData.title}}</h3>
@@ -89,7 +89,16 @@ export default {
   //---------------------------------------------------
   computed: {
     getRelativeDate() {
-      return dayjs().to(this.postItemData.publish_date);
+      const time = (new Date()).toISOString().split('T')[1];
+      const publishDate = this.postItemData?.publish_date;
+      if (publishDate) {
+        const relative = dayjs().to(`${publishDate}T${time}`);
+        return relative === 'a few seconds ago' ? 'Today' : relative;
+      }
+      return 'Today';
+    },
+    date() {
+      return this.postItemData?.publish_date || '';
     },
     postImage() {
       if (this.type === 'news') {
