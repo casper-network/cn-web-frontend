@@ -122,6 +122,10 @@ server {
         proxy_pass https://backend.casper.network/cce/sitemap;
     }
 
+    location /robots.txt {
+        proxy_pass https://backend.casper.network/cce/robots;
+    }
+
     location @prerender {
         ssi on;
         set $prerender 0;
