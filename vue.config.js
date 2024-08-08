@@ -4,6 +4,12 @@ module.exports = {
   devServer: {
     public: '0.0.0.0:8080',
     disableHostCheck: true,
+    proxy: {
+      '/robots.txt': {
+        target: 'http://0.0.0.0:8055/cce/robots',
+        pathRewrite: { 'robots.txt': '' },
+      },
+    },
   },
   pluginOptions: {
     i18n: {
