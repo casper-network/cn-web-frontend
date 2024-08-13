@@ -123,6 +123,7 @@ server {
     }
 
     location /robots.txt {
+        proxy_set_header X-Client-Host $host;
         proxy_pass https://backend.casper.network/cce/robots;
     }
 
