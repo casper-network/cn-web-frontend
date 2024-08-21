@@ -5,6 +5,9 @@
 @import './forms.scss';
 @import './utils.scss';
 
+html {
+  overflow-x: hidden;
+}
 html, body {
   font-family: $font-name;
   font-size: 16px;
@@ -12,12 +15,10 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--color-lighthouse);
-  overflow-x: hidden;
 
   &.no-scroll {
     overflow: hidden;
   }
-
   &.hide-x {
   }
 }
