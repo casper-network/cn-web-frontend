@@ -164,6 +164,7 @@ export default {
 @import '~scss/variables';
 
 .stack {
+  overflow: hidden;
   & > .container {
     display: block;
     padding: 100px 30px;
