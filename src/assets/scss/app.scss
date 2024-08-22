@@ -15,12 +15,6 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--color-lighthouse);
-
-  &.no-scroll {
-    overflow: hidden;
-  }
-  &.hide-x {
-  }
 }
 
 #app {
