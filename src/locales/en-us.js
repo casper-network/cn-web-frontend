@@ -77,6 +77,7 @@ export default {
   },
   social: {
     discord: 'https://discord.gg/caspernetwork',
+    discourse: 'https://forum.casper.network',
     twitter: 'https://twitter.com/Casper_Network',
     linkedin: 'https://www.linkedin.com/company/casper-association/',
     youtube: 'https://www.youtube.com/c/CasperNetwork',

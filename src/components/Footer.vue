@@ -5,32 +5,37 @@
         <p class="h1" v-html="$t('footer.socialTitle')"></p>
         <ul>
           <li>
-            <a :href="$t('social.discord')" target="_blank">
+            <a :href="$t('social.discord')" target="_blank" title="Discord">
               <SVGIconDiscord/>
             </a>
           </li>
           <li>
-            <a :href="$t('social.twitter')" target="_blank">
+            <a :href="$t('social.discourse')" target="_blank" title="Discourse">
+              <SVGIconDiscourse/>
+            </a>
+          </li>
+          <li>
+            <a :href="$t('social.twitter')" target="_blank" title="Twitter">
               <SVGIconTwitter/>
             </a>
           </li>
           <li>
-            <a :href="$t('social.telegram')" target="_blank">
+            <a :href="$t('social.telegram')" target="_blank" title="Telegram">
               <SVGIconTelegram/>
             </a>
           </li>
           <li>
-            <a :href="$t('social.linkedin')" target="_blank">
+            <a :href="$t('social.linkedin')" target="_blank" title="LinkedIn">
               <SVGIconLinkedIn/>
             </a>
           </li>
           <li>
-            <a :href="$t('social.youtube')" target="_blank">
+            <a :href="$t('social.youtube')" target="_blank" title="Youtube">
               <SVGIconYoutube/>
             </a>
           </li>
           <li>
-            <a :href="$t('social.github')" target="_blank">
+            <a :href="$t('social.github')" target="_blank" title="Github">
               <SVGIconGithub/>
             </a>
           </li>
@@ -95,6 +100,7 @@
 
 <script>
 import SVGIconDiscord from '@/assets/svg/icon-social-discord.svg?inline';
+import SVGIconDiscourse from '@/assets/svg/icon-social-discourse.svg?inline';
 import SVGIconTwitter from '@/assets/svg/icon-social-twitter.svg?inline';
 import SVGIconTelegram from '@/assets/svg/icon-social-telegram.svg?inline';
 import SVGIconLinkedIn from '@/assets/svg/icon-social-linkedin.svg?inline';
@@ -106,6 +112,7 @@ export default {
   name: 'Footer',
   components: {
     SVGIconDiscord,
+    SVGIconDiscourse,
     SVGIconTwitter,
     SVGIconTelegram,
     SVGIconLinkedIn,
@@ -243,8 +250,9 @@ footer {
 
       @include breakpoint('sm') {
         margin-top: 24px;
+        flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 0;
+        gap: 12px;
       }
 
       li {
